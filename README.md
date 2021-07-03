@@ -11,5 +11,5 @@
 - `</POST> delete todo : https://todonew412.herokuapp.com/api/delete/{id}`
          
 ## Github Workflow
-- Create branch: `<team_name>/<module> (team2/CallAPI)` 
+- Create branch: `<team_name>/<module> (example : team2/CallAPI)` 
  
