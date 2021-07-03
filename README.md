@@ -1,6 +1,6 @@
 # Fetch data
 - Funny with api
-- 
+
 ## API Docs
 - `</GET> one todo     : https://todonew412.herokuapp.com/api/get/{id}`
 - `</GET> all todos    : https://todonew412.herokuapp.com/api/list`
