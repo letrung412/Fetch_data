@@ -6,22 +6,34 @@ class Fetch extends React.Component{
             _id:"",
             name:"",
             list:[],
-            loaded:false
+            listNew:[],
+            loaded:false,
+            itemPerPage:10,
+            pages:[],
+            offset:0,
+            currentPage:0,
+            pageCount:0
         }
     }
     render(){
-        const {list,_id,name} = this.state;
+        const {_id,name,listNew,pages} = this.state;
         return(
             <div id="api">
                 
                 <ul>
-                    {list.map(item=>(
+                    {listNew.map(item=>(
                         <li key={item._id}>
                             <p>Id : {item._id}</p>
                             <p>Name : {item.name}</p>
                         </li>
                     ))}
                 </ul>
+                <div id="page">
+                    <h4>PAGE</h4>
+                        {pages.map(page=>(
+                            <p key={page} onClick={()=>this.page(page)}>{page}</p>
+                        ))}
+                </div>
                 <div>
                     <h3>Get All</h3>
                     <button type="submit" onClick={this.getAll}>Get All</button>
@@ -53,13 +65,32 @@ class Fetch extends React.Component{
     change = e =>{
         this.setState({[e.target.name]:e.target.value})
     }
+    page(num){
+        this.setState({
+            currentPage:num,
+        })
+        this.getAll();
+    }
     getAll = () =>{
+        const {itemPerPage} = this.state;
         fetch('https://todonew412.herokuapp.com/api/list')
         .then(r=>r.json())
         .then(data=>{
+            const sliceData = data.slice(this.state.offset,this.state.offset+this.state.itemPerPage)
+            const a = function(){
+                let arr = []
+                for(let i=0;i<data.length/itemPerPage;i++){
+                    arr.push(i)
+                }
+                return arr;
+            }
             this.setState({
                 list:data,
-                loaded:true
+                loaded:true,
+                listNew:sliceData,
+                offset:this.state.currentPage*this.state.itemPerPage,
+                pageCount:Math.ceil(data.length/itemPerPage),
+                pages:a()
             })
         })
     }
@@ -68,7 +99,7 @@ class Fetch extends React.Component{
         .then(r=>r.json())
         .then(data=>{
             this.setState({
-                list:[data],
+                listNew:[data],
             })
         })
     }
