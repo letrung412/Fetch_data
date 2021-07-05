@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  font-family: Montserrat, sans-serif;
+}
+
+.container .input-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .input-info label {
+  font-weight: 600;
+}
+
+.container .input-info input {
+  margin: 20px;
+}
+
+.container .btn-grp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .btn-grp button {
+  border: none;
+  background-color: orange;
+  padding: 5px 20px;
+  font-weight: bold;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.container p {
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+}
+/*# sourceMappingURL=style.css.map */
