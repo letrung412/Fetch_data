@@ -25,6 +25,7 @@ class Fetch extends React.Component{
                         <li key={item._id}>
                             <p>Id : {item._id}</p>
                             <p>Name : {item.name}</p>
+                            <button onClick={()=>this.delete(item._id)}>Delete</button>
                         </li>
                     ))}
                 </ul>
@@ -114,14 +115,26 @@ class Fetch extends React.Component{
             body:JSON.stringify({"name":name})
         }).then(r=>this.getOne(_id))
     }
-    delete = () =>{
+    delete = (id) =>{
         const {_id} = this.state;
+        if(id){
+            console.log(id)
+            fetch('https://todonew412.herokuapp.com/api/delete/'+id,{
+            method:"POST",
+            headers:{
+                'content-type':'application/json'
+            },
+        }).then(r=>this.getAll())
+        }
+        else{
         fetch('https://todonew412.herokuapp.com/api/delete/'+_id,{
             method:"POST",
             headers:{
                 'content-type':'application/json'
             },
         }).then(r=>this.getAll())
+    }
+    
     }
     create = e =>{
         const {name} = this.state;
