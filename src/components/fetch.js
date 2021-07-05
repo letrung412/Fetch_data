@@ -116,25 +116,12 @@ class Fetch extends React.Component{
         }).then(r=>this.getOne(_id))
     }
     delete = (id) =>{
-        const {_id} = this.state;
-        if(id){
-            console.log(id)
             fetch('https://todonew412.herokuapp.com/api/delete/'+id,{
             method:"POST",
             headers:{
                 'content-type':'application/json'
             },
         }).then(r=>this.getAll())
-        }
-        else{
-        fetch('https://todonew412.herokuapp.com/api/delete/'+_id,{
-            method:"POST",
-            headers:{
-                'content-type':'application/json'
-            },
-        }).then(r=>this.getAll())
-    }
-    
     }
     create = e =>{
         const {name} = this.state;
